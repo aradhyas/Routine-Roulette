@@ -11,11 +11,6 @@ interface TaskCardProps {
 }
 
 export function TaskCard({ task, isSelected, onToggleSelect, onDelete, showActions = true }: TaskCardProps) {
-  const energyColors = {
-    low: 'badge-energy-low',
-    medium: 'badge-energy-medium',
-    high: 'badge-energy-high'
-  }
 
   return (
     <div 
@@ -28,17 +23,12 @@ export function TaskCard({ task, isSelected, onToggleSelect, onDelete, showActio
       
       <div className="task-row-content">
         <div className="task-row-title">{task.title}</div>
-        <div className="task-row-meta">
-          <span className="task-row-time">{task.est_minutes}m</span>
-        </div>
       </div>
       
       <div className="task-row-indicators">
-        <div className={`task-row-energy ${energyColors[task.energy]}`}>
-          {task.energy === 'low' && '🟢'}
-          {task.energy === 'medium' && '🟡'}
-          {task.energy === 'high' && '🔴'}
-        </div>
+        <span className={`task-energy-text ${task.energy}`}>
+          {task.energy}
+        </span>
         {task.status !== 'open' && (
           <div className={`task-row-status ${task.status === 'done' ? 'task-status-done' : 'task-status-abandoned'}`}>
             {task.status === 'done' ? '✅' : '❌'}

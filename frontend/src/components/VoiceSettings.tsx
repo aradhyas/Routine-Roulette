@@ -76,7 +76,7 @@ export function VoiceSettings() {
             <div className="voice-assignment-row">
               <span className="assignment-label">🎉 Task Complete:</span>
               <select 
-                value={voiceAssignments.taskComplete || 'Domi'} 
+                value={voiceAssignments.taskComplete || 'Elli'} 
                 onChange={(e) => handleVoiceChange('taskComplete', e.target.value as VoiceName)}
                 className="voice-selector"
               >
@@ -92,7 +92,7 @@ export function VoiceSettings() {
             <div className="voice-assignment-row">
               <span className="assignment-label">⏰ Time Expired:</span>
               <select 
-                value={voiceAssignments.timeExpired || 'Arnold'} 
+                value={voiceAssignments.timeExpired || 'Elli'} 
                 onChange={(e) => handleVoiceChange('timeExpired', e.target.value as VoiceName)}
                 className="voice-selector"
               >
@@ -108,7 +108,7 @@ export function VoiceSettings() {
             <div className="voice-assignment-row">
               <span className="assignment-label">😿 Task Abandon:</span>
               <select 
-                value={voiceAssignments.taskAbandon || 'Bella'} 
+                value={voiceAssignments.taskAbandon || 'Elli'} 
                 onChange={(e) => handleVoiceChange('taskAbandon', e.target.value as VoiceName)}
                 className="voice-selector"
               >

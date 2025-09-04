@@ -11,47 +11,31 @@ interface TaskCardProps {
 }
 
 export function TaskCard({ task, isSelected, onToggleSelect, onDelete, showActions = true }: TaskCardProps) {
-
   return (
-    <div 
-      className={`task-row ${isSelected ? 'task-row-selected' : ''}`}
+    <div
+      className={`task-row simple ${isSelected ? 'task-row-selected' : ''}`}
       onClick={() => onToggleSelect?.(task.id)}
+      role="button"
     >
-      <div className="task-row-number">
-        #{task.id.slice(-1)}
-      </div>
-      
-      <div className="task-row-content">
-        <div className="task-row-title">{task.title}</div>
-      </div>
-      
-      <div className="task-row-indicators">
-        <span className={`energy-dot ${task.energy}`} aria-label={task.energy} />
-        {task.status !== 'open' && (
-          <div className={`task-row-status ${task.status === 'done' ? 'task-status-done' : 'task-status-abandoned'}`}>
-            {task.status === 'done' ? '✅' : '❌'}
-          </div>
-        )}
-      </div>
-      
-      {showActions && (
-        <div className="task-row-actions">
-          {isSelected && (
-            <div className="task-row-selected">✓</div>
-          )}
-          {onDelete && (
-            <button
-              className="task-row-delete"
-              onClick={(e) => {
-                e.stopPropagation()
-                onDelete(task.id)
-              }}
-              title="Delete task"
-            >
-              ×
-            </button>
-          )}
-        </div>
+      <div className="task-index">#{task.id.slice(-1)}</div>
+      <div className="task-title">{task.title}</div>
+
+      {/* yellow / green / red dot */}
+      <span className={`energy-dot ${task.energy}`} aria-label={task.energy} />
+
+      {/* plain X (no pill background) */}
+      {showActions && onDelete && (
+        <button
+          className="task-delete"
+          onClick={(e) => {
+            e.stopPropagation()
+            onDelete(task.id)
+          }}
+          aria-label="Delete task"
+          title="Delete"
+        >
+          ×
+        </button>
       )}
     </div>
   )

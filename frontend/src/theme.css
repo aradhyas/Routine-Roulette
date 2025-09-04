@@ -846,46 +846,60 @@ p {
   color: var(--on-surface-variant);
   margin-top: var(--space-sm);
 }
-/* Remove the time column ("10m") wherever it appears */
-.task-row-time { display: none !important; }
 
-/* Indicators: consistent column & perfectly round dots */
-.task-row-indicators {
-  display: flex;
+/* Perfect alignment: [#] [title................] [●] [×]  */
+.task-row.simple {
+  display: grid;
+  grid-template-columns: 32px 1fr 16px 24px;
   align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  min-width: 40px;        /* keeps the column aligned across rows */
-  margin-right: 12px;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
 }
 
-/* Simple energy dot */
+/* Number */
+.task-index {
+  font-size: 12px;
+  color: rgba(255,255,255,.6);
+  text-align: left;
+}
+
+/* Title (truncate nicely if long) */
+.task-title {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Colored dot */
 .energy-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  display: inline-block;
+  justify-self: center;
 }
-.energy-dot.low    { background: #22c55e; } /* green */
-.energy-dot.medium { background: #eab308; } /* yellow */
-.energy-dot.high   { background: #ef4444; } /* red */
+.energy-dot.low    { background: #22c55e; }  /* green */
+.energy-dot.medium { background: #eab308; }  /* yellow */
+.energy-dot.high   { background: #ef4444; }  /* red */
 
-/* Plain "×" (no pill background) */
-.task-row-delete {
+/* Plain "×" button (no background) */
+.task-delete {
   background: transparent !important;
   border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  margin: 0;
-  width: auto; height: auto;
-  border-radius: 0 !important;
   color: var(--on-surface-variant);
   font-size: 18px;
   line-height: 1;
-  transform: none !important;
+  cursor: pointer;
+  padding: 0;
+  justify-self: end;
 }
-.task-row-delete:hover { color: #ef4444; }
-.task-row-delete:active { transform: none; }
+.task-delete:hover { color: #ef4444; }
 
-/* (Optional) keep actions column narrow so things line up nicely */
-.task-row-actions { min-width: 24px; }
+/* Kill any time column like "10m" if it exists elsewhere */
+.task-row-time { display: none !important; }
+
+/* Optional: keep your existing hover/selected effects */
+.task-row.simple:hover { background: rgba(255,255,255,.05); }

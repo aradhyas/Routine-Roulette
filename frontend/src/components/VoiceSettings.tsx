@@ -153,15 +153,16 @@ function getVoiceDescription(voice: VoiceName): string {
   const descriptions: Record<VoiceName, string> = {
     'Rachel': '(Default female)',
     'Adam': '(Male)',
-    'Bella': '(Soft female)',
+    'Bella': '(Soft female - CUTE!)',
     'Antoni': '(Male with accent)',
-    'Elli': '(Young female - CUTE!)',
+    'Elli': '(Young female - VERY CUTE!)',
     'Josh': '(Calm male)',
     'Arnold': '(Deep male)',
     'Domi': '(Energetic female)',
     'Sam': '(Neutral)',
-    'Freya': '(Sweet, gentle female)',
-    'Grace': '(Warm, friendly female)',
+    'Dorothy': '(Sweet, warm female)',
+    'Freya': '(Gentle, soothing female)',
+    'Grace': '(Friendly, approachable female)',
     'Lily': '(Young, cheerful female)',
     'Custom': '(Your custom voice)'
   }

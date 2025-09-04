@@ -2,15 +2,16 @@
 export const VOICE_OPTIONS = {
   'Rachel': 'pNInz6obpgDQGcFmaJgB', // Default female voice
   'Adam': 'pqHfZKP75CvOlQylNhV4',   // Male voice
-  'Bella': 'EXAVITQu4vr4xnSDxMaL',  // Soft female voice
+  'Bella': 'EXAVITQu4vr4xnSDxMaL',  // Soft female voice - CUTE!
   'Antoni': 'ErXwobaYiN019PkySvjV', // Male with accent
-  'Elli': 'MF3mGyEYCl7XYWbV9V6O',   // Young female voice - CUTE!
+  'Elli': 'MF3mGyEYCl7XYWbV9V6O',   // Young female voice - VERY CUTE!
   'Josh': 'TxGEqnHWrfWFTfGW9XjX',   // Calm male voice
   'Arnold': 'VR6AewLTigWG4xSOukaG', // Deep male voice
   'Domi': 'AZnzlk1XvdvUeBnXmlld',   // Energetic female voice
   'Sam': 'yoZ06aMxZJJ28mfd3POQ',    // Neutral voice
-  'Freya': 'jsCqWAovK2LkecY7zXl4',  // Sweet, gentle female voice
-  'Grace': 'oWAxZDx7w5VEj9dCyTzz',  // Warm, friendly female voice
+  'Dorothy': 'ThT5KcBeYPX3keUQqHPh', // Sweet, warm female voice
+  'Freya': 'jsCqWAovK2LkecY7zXl4',  // Gentle, soothing female voice
+  'Grace': 'oWAxZDx7w5VEj9dCyTzz',  // Friendly, approachable female voice
   'Lily': 'pFZP5JQG7iQjIQuC4Bku',   // Young, cheerful female voice
   // Add custom voice ID here if you create one
   'Custom': 'your_custom_voice_id_here' // Replace with your custom voice ID
@@ -22,10 +23,10 @@ class VoiceService {
   private isEnabled: boolean = false
   private useElevenLabs: boolean = false
   private voiceAssignments = {
-    taskStart: 'Grace' as VoiceName,    // Warm, friendly voice for starting
-    taskComplete: 'Lily' as VoiceName,  // Young, cheerful voice for celebrations
-    timeExpired: 'Freya' as VoiceName,  // Sweet, gentle voice for warnings
-    taskAbandon: 'Elli' as VoiceName    // Young, cute voice for abandonment
+    taskStart: 'Bella' as VoiceName,    // Soft, cute voice for starting
+    taskComplete: 'Elli' as VoiceName,  // Very cute voice for celebrations
+    timeExpired: 'Dorothy' as VoiceName, // Sweet, warm voice for warnings
+    taskAbandon: 'Elli' as VoiceName    // Very cute voice for abandonment
   }
   private apiKey: string | null = null
 

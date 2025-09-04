@@ -641,6 +641,19 @@ p {
     font-size: 0.7rem;
     padding: 2px 6px;
   }
+  
+  /* Hide time badge on mobile for cleaner look */
+  .task-badge-time {
+    display: none;
+  }
+  
+  .task-card-header {
+    margin-bottom: 4px;
+  }
+  
+  .task-card-badges {
+    justify-content: flex-start;
+  }
 }
 
 .animate-bounce {

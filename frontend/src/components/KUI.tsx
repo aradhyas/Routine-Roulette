@@ -19,52 +19,52 @@ export function TaskCard({ task, isSelected, onToggleSelect, onDelete, showActio
 
   return (
     <div 
-      className={`task-card ${isSelected ? 'task-card-selected' : ''}`}
+      className={`task-row ${isSelected ? 'task-row-selected' : ''}`}
       onClick={() => onToggleSelect?.(task.id)}
     >
-      <div className="task-card-content">
-        <div className="task-card-main">
-          <div className="task-card-header">
-            <span className="task-card-number">#{task.id.slice(-1)}</span>
-            <h4 className="task-card-title">{task.title}</h4>
-          </div>
-          <div className="task-card-badges">
-            <span className="task-badge task-badge-time">
-              {task.est_minutes}m
-            </span>
-            <span className={`task-badge task-badge-energy ${energyColors[task.energy]}`}>
-              {task.energy === 'low' && '🟢'}
-              {task.energy === 'medium' && '🟡'}
-              {task.energy === 'high' && '🔴'}
-            </span>
-            {task.status !== 'open' && (
-              <span className={`task-badge ${task.status === 'done' ? 'task-badge-done' : 'task-badge-abandoned'}`}>
-                {task.status === 'done' ? '✅' : '❌'}
-              </span>
-            )}
-          </div>
+      <div className="task-row-number">
+        #{task.id.slice(-1)}
+      </div>
+      
+      <div className="task-row-content">
+        <div className="task-row-title">{task.title}</div>
+        <div className="task-row-meta">
+          <span className="task-row-time">{task.est_minutes}m</span>
         </div>
-        
-        {showActions && (
-          <div className="task-card-actions">
-            {isSelected && (
-              <div className="task-card-selected-icon">✓</div>
-            )}
-            {onDelete && (
-              <button
-                className="task-card-delete"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  onDelete(task.id)
-                }}
-                title="Delete task"
-              >
-                ×
-              </button>
-            )}
+      </div>
+      
+      <div className="task-row-indicators">
+        <div className={`task-row-energy ${energyColors[task.energy]}`}>
+          {task.energy === 'low' && '🟢'}
+          {task.energy === 'medium' && '🟡'}
+          {task.energy === 'high' && '🔴'}
+        </div>
+        {task.status !== 'open' && (
+          <div className={`task-row-status ${task.status === 'done' ? 'task-status-done' : 'task-status-abandoned'}`}>
+            {task.status === 'done' ? '✅' : '❌'}
           </div>
         )}
       </div>
+      
+      {showActions && (
+        <div className="task-row-actions">
+          {isSelected && (
+            <div className="task-row-selected">✓</div>
+          )}
+          {onDelete && (
+            <button
+              className="task-row-delete"
+              onClick={(e) => {
+                e.stopPropagation()
+                onDelete(task.id)
+              }}
+              title="Delete task"
+            >
+              ×
+            </button>
+          )}
+        </div>
+      )}
     </div>
   )
 }

@@ -167,9 +167,6 @@ export function AddTasks() {
               {openTasks.map((task, index) => {
                 const difficultyEmoji = task.energy === 'low' ? '🟢' : 
                                        task.energy === 'medium' ? '🟡' : '🔴'
-                const timeDisplay = task.est_minutes < 60 ? 
-                                   `${task.est_minutes}m` : 
-                                   `${Math.floor(task.est_minutes / 60)}h ${task.est_minutes % 60}m`
                 
                 return (
                   <div 
@@ -180,7 +177,6 @@ export function AddTasks() {
                     <div className="flex items-center gap-md flex-1">
                       <span className="text-sm font-mono text-gray-400 w-8">#{index + 1}</span>
                       <span className="font-medium text-gray-800 flex-1">{task.title}</span>
-                      <span className="text-xs text-gray-500 font-mono">{timeDisplay}</span>
                       <span className="text-lg">{difficultyEmoji}</span>
                     </div>
                     <button

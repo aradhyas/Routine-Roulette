@@ -1,0 +1,20 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Happy brain with gradient -->
+  <defs>
+    <radialGradient id="happyGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFE4E6"/>
+      <stop offset="100%" stop-color="#FF69B4"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="35" fill="url(#happyGrad)" stroke="#FF1493" stroke-width="3"/>
+  <!-- Eyes -->
+  <circle cx="38" cy="42" r="4" fill="#000"/>
+  <circle cx="62" cy="42" r="4" fill="#000"/>
+  <circle cx="39" cy="41" r="1.5" fill="#FFF"/>
+  <circle cx="63" cy="41" r="1.5" fill="#FFF"/>
+  <!-- Happy smile -->
+  <path d="M 32 58 Q 50 72 68 58" stroke="#000" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Cheeks -->
+  <circle cx="28" cy="55" r="3" fill="#FF69B4" opacity="0.6"/>
+  <circle cx="72" cy="55" r="3" fill="#FF69B4" opacity="0.6"/>
+</svg>

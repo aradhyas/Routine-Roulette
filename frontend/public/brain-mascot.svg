@@ -1,0 +1,95 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shadow -->
+  <ellipse cx="100" cy="190" rx="40" ry="8" fill="#E0E0E0" opacity="0.3"/>
+  
+  <!-- Sparkles -->
+  <g fill="#FFD700">
+    <path d="M30 50 L32 54 L36 52 L32 56 L30 60 L28 56 L24 52 L28 54 Z"/>
+    <path d="M170 40 L172 44 L176 42 L172 46 L170 50 L168 46 L164 42 L168 44 Z"/>
+    <path d="M40 120 L42 124 L46 122 L42 126 L40 130 L38 126 L34 122 L38 124 Z"/>
+    <path d="M160 110 L162 114 L166 112 L162 116 L160 120 L158 116 L154 112 L158 114 Z"/>
+    <circle cx="50" cy="80" r="2"/>
+    <circle cx="150" cy="70" r="2"/>
+    <circle cx="180" cy="90" r="1.5"/>
+    <circle cx="20" cy="90" r="1.5"/>
+  </g>
+  
+  <!-- Barbell -->
+  <!-- Left weight -->
+  <ellipse cx="40" cy="60" rx="18" ry="25" fill="#8B4A9C" stroke="#6B2C7A" stroke-width="2"/>
+  <ellipse cx="40" cy="60" rx="12" ry="18" fill="#A855B8" opacity="0.7"/>
+  <ellipse cx="38" cy="55" rx="4" ry="6" fill="#C084CC" opacity="0.5"/>
+  
+  <!-- Right weight -->
+  <ellipse cx="160" cy="60" rx="18" ry="25" fill="#8B4A9C" stroke="#6B2C7A" stroke-width="2"/>
+  <ellipse cx="160" cy="60" rx="12" ry="18" fill="#A855B8" opacity="0.7"/>
+  <ellipse cx="162" cy="55" rx="4" ry="6" fill="#C084CC" opacity="0.5"/>
+  
+  <!-- Bar -->
+  <rect x="58" y="57" width="84" height="6" fill="#8B4A9C" stroke="#6B2C7A" stroke-width="1"/>
+  
+  <!-- Hands -->
+  <g fill="#FFFFFF" stroke="#8B4A9C" stroke-width="2">
+    <!-- Left hand -->
+    <circle cx="75" cy="60" r="8"/>
+    <ellipse cx="72" cy="58" rx="3" ry="2" fill="#F0F0F0"/>
+    
+    <!-- Right hand -->
+    <circle cx="125" cy="60" r="8"/>
+    <ellipse cx="128" cy="58" rx="3" ry="2" fill="#F0F0F0"/>
+  </g>
+  
+  <!-- Brain body -->
+  <g>
+    <!-- Main brain shape -->
+    <path d="M100 80 C85 80 75 90 75 105 C75 110 76 115 78 120 C75 125 75 130 78 135 C80 140 85 145 95 148 C97 150 99 152 100 155 C101 152 103 150 105 148 C115 145 120 140 122 135 C125 130 125 125 122 120 C124 115 125 110 125 105 C125 90 115 80 100 80 Z" fill="#FF9BB5" stroke="#E85A8A" stroke-width="2"/>
+    
+    <!-- Brain folds -->
+    <path d="M85 95 Q90 90 95 95 Q100 100 105 95 Q110 90 115 95" fill="none" stroke="#E85A8A" stroke-width="1.5"/>
+    <path d="M80 110 Q85 105 90 110 Q95 115 100 110 Q105 105 110 110 Q115 115 120 110" fill="none" stroke="#E85A8A" stroke-width="1.5"/>
+    <path d="M85 125 Q90 120 95 125 Q100 130 105 125 Q110 120 115 125" fill="none" stroke="#E85A8A" stroke-width="1.5"/>
+    
+    <!-- Highlights -->
+    <ellipse cx="90" cy="100" rx="8" ry="12" fill="#FFB5C9" opacity="0.6"/>
+    <ellipse cx="110" cy="105" rx="6" ry="10" fill="#FFB5C9" opacity="0.4"/>
+    <circle cx="95" cy="95" r="3" fill="#FFFFFF" opacity="0.7"/>
+  </g>
+  
+  <!-- Eyes -->
+  <g>
+    <circle cx="92" cy="105" r="4" fill="#000000"/>
+    <circle cx="108" cy="105" r="4" fill="#000000"/>
+    <circle cx="93" cy="104" r="1.5" fill="#FFFFFF"/>
+    <circle cx="109" cy="104" r="1.5" fill="#FFFFFF"/>
+  </g>
+  
+  <!-- Smile -->
+  <path d="M88 120 Q100 130 112 120" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Arms -->
+  <g fill="#E85A8A" stroke="#D1477A" stroke-width="2">
+    <!-- Left arm -->
+    <rect x="70" y="65" width="8" height="25" rx="4"/>
+    <!-- Right arm -->
+    <rect x="122" y="65" width="8" height="25" rx="4"/>
+  </g>
+  
+  <!-- Legs -->
+  <g fill="#E85A8A" stroke="#D1477A" stroke-width="2">
+    <!-- Left leg -->
+    <rect x="90" y="150" width="6" height="25" rx="3"/>
+    <!-- Right leg -->
+    <rect x="104" y="150" width="6" height="25" rx="3"/>
+  </g>
+  
+  <!-- Feet -->
+  <g fill="#FFD700" stroke="#E6C200" stroke-width="2">
+    <!-- Left foot -->
+    <ellipse cx="90" cy="180" rx="12" ry="6"/>
+    <ellipse cx="88" cy="178" rx="4" ry="2" fill="#FFF4A3" opacity="0.7"/>
+    
+    <!-- Right foot -->
+    <ellipse cx="110" cy="180" rx="12" ry="6"/>
+    <ellipse cx="112" cy="178" rx="4" ry="2" fill="#FFF4A3" opacity="0.7"/>
+  </g>
+</svg>

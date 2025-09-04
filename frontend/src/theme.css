@@ -846,3 +846,46 @@ p {
   color: var(--on-surface-variant);
   margin-top: var(--space-sm);
 }
+/* Remove the time column ("10m") wherever it appears */
+.task-row-time { display: none !important; }
+
+/* Indicators: consistent column & perfectly round dots */
+.task-row-indicators {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 40px;        /* keeps the column aligned across rows */
+  margin-right: 12px;
+}
+
+/* Simple energy dot */
+.energy-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.energy-dot.low    { background: #22c55e; } /* green */
+.energy-dot.medium { background: #eab308; } /* yellow */
+.energy-dot.high   { background: #ef4444; } /* red */
+
+/* Plain "×" (no pill background) */
+.task-row-delete {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0;
+  width: auto; height: auto;
+  border-radius: 0 !important;
+  color: var(--on-surface-variant);
+  font-size: 18px;
+  line-height: 1;
+  transform: none !important;
+}
+.task-row-delete:hover { color: #ef4444; }
+.task-row-delete:active { transform: none; }
+
+/* (Optional) keep actions column narrow so things line up nicely */
+.task-row-actions { min-width: 24px; }

@@ -26,9 +26,7 @@ export function TaskCard({ task, isSelected, onToggleSelect, onDelete, showActio
       </div>
       
       <div className="task-row-indicators">
-        <span className={`task-energy-text ${task.energy}`}>
-          {task.energy}
-        </span>
+        <span className={`energy-dot ${task.energy}`} aria-label={task.energy} />
         {task.status !== 'open' && (
           <div className={`task-row-status ${task.status === 'done' ? 'task-status-done' : 'task-status-abandoned'}`}>
             {task.status === 'done' ? '✅' : '❌'}

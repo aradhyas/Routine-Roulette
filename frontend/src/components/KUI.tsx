@@ -19,44 +19,47 @@ export function TaskCard({ task, isSelected, onToggleSelect, onDelete, showActio
 
   return (
     <div 
-      className={`card ${isSelected ? 'ring-2 ring-primary' : ''} cursor-pointer transition-all hover:shadow-lg`}
+      className={`task-card ${isSelected ? 'task-card-selected' : ''}`}
       onClick={() => onToggleSelect?.(task.id)}
     >
-      <div className="flex justify-between items-start gap-md">
-        <div className="flex-1">
-          <h4 className="font-semibold text-lg mb-sm">{task.title}</h4>
-          <div className="flex gap-sm flex-wrap">
-            <span className="badge badge-time">
-              ⏱️ {task.est_minutes}m
+      <div className="task-card-content">
+        <div className="task-card-main">
+          <div className="task-card-header">
+            <span className="task-card-number">#{task.id.slice(-1)}</span>
+            <h4 className="task-card-title">{task.title}</h4>
+          </div>
+          <div className="task-card-badges">
+            <span className="task-badge task-badge-time">
+              {task.est_minutes}m
             </span>
-            <span className={`badge ${energyColors[task.energy]}`}>
+            <span className={`task-badge task-badge-energy ${energyColors[task.energy]}`}>
               {task.energy === 'low' && '🟢'}
               {task.energy === 'medium' && '🟡'}
               {task.energy === 'high' && '🔴'}
-              {task.energy}
             </span>
             {task.status !== 'open' && (
-              <span className={`badge ${task.status === 'done' ? 'badge-energy-low' : 'opacity-50'}`}>
-                {task.status === 'done' ? '✅ Done' : '❌ Abandoned'}
+              <span className={`task-badge ${task.status === 'done' ? 'task-badge-done' : 'task-badge-abandoned'}`}>
+                {task.status === 'done' ? '✅' : '❌'}
               </span>
             )}
           </div>
         </div>
         
         {showActions && (
-          <div className="flex gap-sm">
+          <div className="task-card-actions">
             {isSelected && (
-              <div className="text-primary text-xl">✓</div>
+              <div className="task-card-selected-icon">✓</div>
             )}
             {onDelete && (
               <button
-                className="btn-ghost btn-sm opacity-50 hover:opacity-100"
+                className="task-card-delete"
                 onClick={(e) => {
                   e.stopPropagation()
                   onDelete(task.id)
                 }}
+                title="Delete task"
               >
-                🗑️
+                ×
               </button>
             )}
           </div>
@@ -178,16 +181,20 @@ export function Toast({ message, type, onClose }: ToastProps) {
 
 interface ConfirmDialogProps {
   isOpen: boolean
+  type?: 'abandon' | 'reset'
   onConfirm: () => void
   onCancel: () => void
 }
 
 export function ConfirmDialog({ 
   isOpen, 
+  type = 'abandon',
   onConfirm, 
   onCancel 
 }: ConfirmDialogProps) {
   if (!isOpen) return null
+
+  const isAbandon = type === 'abandon'
 
   return (
     <div 
@@ -198,16 +205,25 @@ export function ConfirmDialog({
         className="cute-modal"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Sad Cat Icon */}
+        {/* Icon */}
         <div className="cute-modal-cat">
-          😿
+          {isAbandon ? '😿' : '🔄'}
         </div>
 
         {/* Message */}
         <div className="cute-modal-content">
           <p className="cute-modal-text">
-            The knitting cat will be sad.<br />
-            <strong>ARE YOU SURE YOU WANT TO ABANDON?</strong>
+            {isAbandon ? (
+              <>
+                The knitting cat will be sad.<br />
+                <strong>ARE YOU SURE YOU WANT TO ABANDON?</strong>
+              </>
+            ) : (
+              <>
+                Reset your progress?<br />
+                <strong>YOUR TIMER WILL START OVER</strong>
+              </>
+            )}
           </p>
         </div>
 
@@ -217,13 +233,13 @@ export function ConfirmDialog({
             onClick={onCancel} 
             className="cute-btn cute-btn-keep"
           >
-            Keep Going! 🧶
+            {isAbandon ? 'Keep Going! 🧶' : 'Keep Timer ⏰'}
           </button>
           <button 
             onClick={onConfirm} 
             className="cute-btn cute-btn-abandon"
           >
-            Yes, Abandon 😔
+            {isAbandon ? 'Yes, Abandon 😔' : 'Yes, Reset 🔄'}
           </button>
         </div>
       </div>

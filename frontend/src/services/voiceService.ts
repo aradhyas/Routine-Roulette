@@ -1,14 +1,17 @@
-// ElevenLabs Voice IDs - You can change these to different voices
+// ElevenLabs Voice IDs - Cute and sweet voices
 export const VOICE_OPTIONS = {
   'Rachel': 'pNInz6obpgDQGcFmaJgB', // Default female voice
   'Adam': 'pqHfZKP75CvOlQylNhV4',   // Male voice
   'Bella': 'EXAVITQu4vr4xnSDxMaL',  // Soft female voice
   'Antoni': 'ErXwobaYiN019PkySvjV', // Male with accent
-  'Elli': 'MF3mGyEYCl7XYWbV9V6O',   // Young female voice
+  'Elli': 'MF3mGyEYCl7XYWbV9V6O',   // Young female voice - CUTE!
   'Josh': 'TxGEqnHWrfWFTfGW9XjX',   // Calm male voice
   'Arnold': 'VR6AewLTigWG4xSOukaG', // Deep male voice
   'Domi': 'AZnzlk1XvdvUeBnXmlld',   // Energetic female voice
   'Sam': 'yoZ06aMxZJJ28mfd3POQ',    // Neutral voice
+  'Freya': 'jsCqWAovK2LkecY7zXl4',  // Sweet, gentle female voice
+  'Grace': 'oWAxZDx7w5VEj9dCyTzz',  // Warm, friendly female voice
+  'Lily': 'pFZP5JQG7iQjIQuC4Bku',   // Young, cheerful female voice
   // Add custom voice ID here if you create one
   'Custom': 'your_custom_voice_id_here' // Replace with your custom voice ID
 }
@@ -19,10 +22,10 @@ class VoiceService {
   private isEnabled: boolean = false
   private useElevenLabs: boolean = false
   private voiceAssignments = {
-    taskStart: 'Josh' as VoiceName,     // Calm, encouraging voice for starting
-    taskComplete: 'Domi' as VoiceName,  // Energetic voice for celebrations
-    timeExpired: 'Arnold' as VoiceName, // Deep, authoritative for warnings
-    taskAbandon: 'Bella' as VoiceName   // Soft, sympathetic voice for abandonment
+    taskStart: 'Grace' as VoiceName,    // Warm, friendly voice for starting
+    taskComplete: 'Lily' as VoiceName,  // Young, cheerful voice for celebrations
+    timeExpired: 'Freya' as VoiceName,  // Sweet, gentle voice for warnings
+    taskAbandon: 'Elli' as VoiceName    // Young, cute voice for abandonment
   }
   private apiKey: string | null = null
 
@@ -97,10 +100,12 @@ class VoiceService {
         },
         body: JSON.stringify({
           text,
-          model_id: 'eleven_monolingual_v1',
+          model_id: 'eleven_turbo_v2',
           voice_settings: {
-            stability: 0.5,
-            similarity_boost: 0.5
+            stability: 0.75,
+            similarity_boost: 0.8,
+            style: 0.2,
+            use_speaker_boost: true
           }
         })
       })

@@ -193,11 +193,13 @@ export function Timer() {
       {/* Dialogs */}
       <ConfirmDialog
         isOpen={showResetDialog}
+        type="reset"
         onConfirm={handleReset}
         onCancel={() => setShowResetDialog(false)}
       />
       <ConfirmDialog
         isOpen={showAbandonDialog}
+        type="abandon"
         onConfirm={handleAbandon}
         onCancel={() => setShowAbandonDialog(false)}
       />

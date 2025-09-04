@@ -155,11 +155,14 @@ function getVoiceDescription(voice: VoiceName): string {
     'Adam': '(Male)',
     'Bella': '(Soft female)',
     'Antoni': '(Male with accent)',
-    'Elli': '(Young female)',
+    'Elli': '(Young female - CUTE!)',
     'Josh': '(Calm male)',
-    'Arnold': '(Deep male - Amitabh style)',
+    'Arnold': '(Deep male)',
     'Domi': '(Energetic female)',
     'Sam': '(Neutral)',
+    'Freya': '(Sweet, gentle female)',
+    'Grace': '(Warm, friendly female)',
+    'Lily': '(Young, cheerful female)',
     'Custom': '(Your custom voice)'
   }
   return descriptions[voice] || ''

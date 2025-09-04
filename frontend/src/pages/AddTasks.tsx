@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useStore } from '../store'
-import { normalizeText } from '../lib/normalize'
 import { EmptyState, LoadingSpinner } from '../components/KUI'
 import { Brain } from '../components/Brain'
-
+import { normalizeText } from '../lib/normalize'
 
 export function AddTasks() {
   const navigate = useNavigate()
@@ -37,58 +36,28 @@ export function AddTasks() {
 
 
   const handleGetSmartSuggestions = async () => {
-    if (!rawText.trim()) {
-      // If no text, generate general suggestions
-      const suggestions = await generateSmartSuggestions()
-      if (suggestions.length > 0) {
-        setRawText(suggestions.join('\n'))
-      }
-    } else {
-      // If there's text, append suggestions to existing text
-      const suggestions = await generateSmartSuggestions()
-      if (suggestions.length > 0) {
-        setRawText(prev => prev ? `${prev}\n${suggestions.join('\n')}` : suggestions.join('\n'))
-      }
-    }
-  }
-
-  const generateSmartSuggestions = async () => {
-    try {
-      const { openaiService } = await import('../services/openaiService')
-      
-      const completedTasks = tasks
-        .filter(task => task.status === 'done')
-        .map(task => task.title)
-      
-      const currentHour = new Date().getHours()
-      const timeOfDay = currentHour < 12 ? 'morning' : currentHour < 17 ? 'afternoon' : 'evening'
-      
-      const suggestions = await openaiService.generateTaskSuggestions({
-        completedTasks,
-        timeOfDay
-      })
-      
-      return suggestions
-    } catch (error) {
-      console.error('Failed to generate suggestions:', error)
-      // Fallback suggestions
-      return [
-        'Take a 10 minute walk',
-        'Drink a glass of water',
-        'Do 5 minutes of stretching',
-        'Check and respond to important emails'
-      ]
-    }
-  }
-
-
-  const handleSpinTasks = () => {
-    // Randomly select a task and go directly to timer
-    if (openTasks.length === 0) return
+    const suggestions = [
+      'Review emails and respond to urgent ones',
+      'Plan tomorrow\'s schedule',
+      'Take a 15-minute walk outside',
+      'Organize workspace and clean desk',
+      'Read for 30 minutes'
+    ]
     
-    const randomTask = openTasks[Math.floor(Math.random() * openTasks.length)]
-    navigate('/timer', { state: { task: randomTask } })
+    // Get 3-5 random suggestions
+    const randomSuggestions = suggestions
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3 + Math.floor(Math.random() * 3))
+    
+    if (!rawText.trim()) {
+      setRawText(randomSuggestions.join('\n'))
+    } else {
+      setRawText(prev => prev ? `${prev}\n${randomSuggestions.join('\n')}` : randomSuggestions.join('\n'))
+    }
   }
+
+
+
 
   // Remove duplicate tasks by title and get only open tasks
   const openTasks = tasks
@@ -162,55 +131,58 @@ export function AddTasks() {
           <div className="text-center py-lg">
             <h2 className="text-2xl font-bold mb-lg">📋 Your Tasks</h2>
             
-            {/* Clean Task List */}
-            <div className="max-w-2xl mx-auto space-y-sm">
+            {/* Task List */}
+            <div className="space-y-3 px-4 sm:px-0 max-w-2xl mx-auto">
               {openTasks.map((task, index) => {
                 const difficultyEmoji = task.energy === 'low' ? '🟢' : 
-                                       task.energy === 'medium' ? '🟡' : '🔴'
+                                      task.energy === 'medium' ? '🟡' : '🔴'
                 
                 return (
                   <div 
                     key={task.id}
-                    className="flex items-center justify-between p-md bg-white border border-gray-200 rounded-lg hover:shadow-sm group transition-all cursor-pointer"
+                    className="bg-surface rounded-lg p-4 border border-outline-variant hover:bg-gray-50 cursor-pointer transition-colors"
                     onClick={() => navigate('/timer', { state: { task } })}
                   >
-                    <div className="flex items-center gap-md flex-1">
-                      <span className="text-sm font-mono text-gray-400 w-8">#{index + 1}</span>
-                      <span className="font-medium text-gray-800 flex-1">{task.title}</span>
-                      <span className="text-lg">{difficultyEmoji}</span>
+                    <div className="flex items-center justify-between w-full">
+                      <div className="flex items-start gap-3 flex-1 min-w-0">
+                        <span className="text-sm font-mono text-gray-500 mt-0.5 flex-shrink-0">{index + 1}.</span>
+                        <span className="font-medium text-gray-800 leading-relaxed">{task.title}</span>
+                      </div>
+                      <div className="flex items-center gap-3 ml-4 flex-shrink-0">
+                        <span className="text-lg">{difficultyEmoji}</span>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            deleteTask(task.id)
+                          }}
+                          className="text-gray-400 hover:text-red-500 transition-colors text-xl w-6 h-6 flex items-center justify-center"
+                          title="Delete task"
+                        >
+                          ×
+                        </button>
+                      </div>
                     </div>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        deleteTask(task.id)
-                      }}
-                      className="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 transition-all ml-sm"
-                      title="Delete task"
-                    >
-                      ✕
-                    </button>
                   </div>
                 )
               })}
             </div>
             <div aria-hidden role="presentation" style={{ height: 40 }} />
             
-            {/* Action Buttons */}
-            <div className="flex justify-center gap-sm mt-[40px] mb-[24px] max-w-sm mx-auto">
+            {/* Action Buttons - Centered */}
+            <div className="flex justify-center gap-3 mt-6">
               <button
-                onClick={() => {
-                  // Clear all tasks
-                  setTasks([])
-                }}
-                className="btn btn-sm text-red-600 border border-red-300 hover:bg-red-50 px-md py-sm rounded-lg flex-1"
+                onClick={() => setTasks([])}
+                className="btn btn-secondary btn-sm"
+                disabled={tasks.length === 0}
               >
                 🗑️ Clear All
               </button>
               <button
-                onClick={handleSpinTasks}
-                className="btn btn-sm bg-purple-600 hover:bg-purple-700 text-white px-md py-sm rounded-lg flex-1"
+                onClick={() => navigate('/spin')}
+                className="btn btn-primary btn-sm"
+                disabled={tasks.length === 0}
               >
-                🎡 Spin Tasks
+                🎲 Spin Tasks
               </button>
             </div>
             <div aria-hidden role="presentation" style={{ height: 20 }} />

@@ -178,20 +178,12 @@ export function Toast({ message, type, onClose }: ToastProps) {
 
 interface ConfirmDialogProps {
   isOpen: boolean
-  title: string
-  message: string
-  confirmLabel?: string
-  cancelLabel?: string
   onConfirm: () => void
   onCancel: () => void
 }
 
 export function ConfirmDialog({ 
   isOpen, 
-  title, 
-  message, 
-  confirmLabel = 'Confirm', 
-  cancelLabel = 'Cancel',
   onConfirm, 
   onCancel 
 }: ConfirmDialogProps) {

@@ -1,9 +1,22 @@
 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="40" fill="#98FB98" stroke="#32CD32" stroke-width="2"/>
-  <circle cx="35" cy="40" r="3" fill="#000"/>
-  <circle cx="65" cy="40" r="3" fill="#000"/>
-  <path d="M 25 55 Q 50 70 75 55" stroke="#000" stroke-width="2" fill="none"/>
-  <text x="50" y="25" text-anchor="middle" font-size="12" fill="#32CD32">🧠</text>
-  <text x="20" y="30" font-size="8">♪</text>
-  <text x="75" y="35" font-size="8">♫</text>
+  <!-- Dancing brain with gradient -->
+  <defs>
+    <radialGradient id="danceGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#E6FFE6"/>
+      <stop offset="100%" stop-color="#32CD32"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="35" fill="url(#danceGrad)" stroke="#228B22" stroke-width="3"/>
+  <!-- Happy dancing eyes -->
+  <circle cx="38" cy="42" r="4" fill="#000"/>
+  <circle cx="62" cy="42" r="4" fill="#000"/>
+  <circle cx="39" cy="40" r="1.5" fill="#FFF"/>
+  <circle cx="63" cy="40" r="1.5" fill="#FFF"/>
+  <!-- Big happy smile -->
+  <path d="M 28 55 Q 50 75 72 55" stroke="#000" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Music notes -->
+  <text x="18" y="28" font-size="12" fill="#32CD32">♪</text>
+  <text x="78" y="35" font-size="14" fill="#32CD32">♫</text>
+  <text x="15" y="65" font-size="10" fill="#32CD32">♬</text>
+  <text x="82" y="70" font-size="12" fill="#32CD32">♪</text>
 </svg>

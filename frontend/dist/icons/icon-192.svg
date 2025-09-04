@@ -1,0 +1,23 @@
+<svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </radialGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="96" cy="96" r="96" fill="url(#bgGrad)"/>
+  <!-- Roulette wheel -->
+  <circle cx="96" cy="96" r="60" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="4"/>
+  <!-- Wheel segments -->
+  <path d="M 96 96 L 96 36 A 60 60 0 0 1 148 76 Z" fill="#EC4899"/>
+  <path d="M 96 96 L 148 76 A 60 60 0 0 1 148 116 Z" fill="#06B6D4"/>
+  <path d="M 96 96 L 148 116 A 60 60 0 0 1 96 156 Z" fill="#10B981"/>
+  <path d="M 96 96 L 96 156 A 60 60 0 0 1 44 116 Z" fill="#F59E0B"/>
+  <path d="M 96 96 L 44 116 A 60 60 0 0 1 44 76 Z" fill="#EF4444"/>
+  <path d="M 96 96 L 44 76 A 60 60 0 0 1 96 36 Z" fill="#8B5A2B"/>
+  <!-- Center circle -->
+  <circle cx="96" cy="96" r="8" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"/>
+  <!-- Pointer -->
+  <polygon points="96,20 100,30 92,30" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"/>
+</svg>

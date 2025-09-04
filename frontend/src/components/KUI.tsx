@@ -198,16 +198,40 @@ export function ConfirmDialog({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-md">
-      <div className="bg-surface rounded-lg p-lg max-w-sm w-full">
-        <h3 className="font-semibold text-lg mb-sm">{title}</h3>
-        <p className="text-on-surface-variant mb-lg">{message}</p>
-        <div className="flex gap-sm justify-end">
-          <button onClick={onCancel} className="btn btn-ghost">
-            {cancelLabel}
+    <div 
+      className="cute-modal-overlay"
+      onClick={onCancel}
+    >
+      <div 
+        className="cute-modal"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Sad Cat Icon */}
+        <div className="cute-modal-cat">
+          😿
+        </div>
+
+        {/* Message */}
+        <div className="cute-modal-content">
+          <p className="cute-modal-text">
+            The knitting cat will be sad.<br />
+            <strong>ARE YOU SURE YOU WANT TO ABANDON?</strong>
+          </p>
+        </div>
+
+        {/* Actions */}
+        <div className="cute-modal-actions">
+          <button 
+            onClick={onCancel} 
+            className="cute-btn cute-btn-keep"
+          >
+            Keep Going! 🧶
           </button>
-          <button onClick={onConfirm} className="btn btn-primary">
-            {confirmLabel}
+          <button 
+            onClick={onConfirm} 
+            className="cute-btn cute-btn-abandon"
+          >
+            Yes, Abandon 😔
           </button>
         </div>
       </div>

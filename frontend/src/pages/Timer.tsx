@@ -193,17 +193,11 @@ export function Timer() {
       {/* Dialogs */}
       <ConfirmDialog
         isOpen={showResetDialog}
-        title="Reset Timer"
-        message="Are you sure you want to reset the timer? Your progress will be lost."
-        confirmLabel="Reset"
         onConfirm={handleReset}
         onCancel={() => setShowResetDialog(false)}
       />
       <ConfirmDialog
         isOpen={showAbandonDialog}
-        title="Abandon Task"
-        message="Are you sure you want to abandon this task? It will be marked as abandoned."
-        confirmLabel="Abandon"
         onConfirm={handleAbandon}
         onCancel={() => setShowAbandonDialog(false)}
       />

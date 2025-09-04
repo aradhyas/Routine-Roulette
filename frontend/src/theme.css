@@ -903,3 +903,76 @@ p {
 
 /* Optional: keep your existing hover/selected effects */
 .task-row.simple:hover { background: rgba(255,255,255,.05); }
+
+/* Desktop-first: crisp 4-column grid
+   [#] [title................] [●] [×]  */
+   .task-row.simple{
+    display:grid;
+    grid-template-columns: 32px 1fr 14px 28px; /* index, title, dot, X */
+    align-items:center;
+    gap:12px;
+    padding:10px 12px;
+    border-radius:8px;
+  }
+  
+  /* number */
+  .task-index{
+    font-size:12px;
+    color:rgba(255,255,255,.6);
+  }
+  
+  /* title */
+  .task-title{
+    color:#fff;
+    font-weight:500;
+    font-size:14px;
+    line-height:1.3;
+    /* allow 2 lines without pushing dot/X out of alignment */
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow:hidden;
+  }
+  
+  /* energy dot */
+  .energy-dot{
+    width:12px; height:12px; border-radius:50%;
+    justify-self:center;
+  }
+  .energy-dot.low{background:#22c55e;}    /* green */
+  .energy-dot.medium{background:#eab308;} /* yellow */
+  .energy-dot.high{background:#ef4444;}   /* red */
+  
+  /* plain X */
+  .task-delete{
+    background:transparent!important;
+    border:none!important;
+    box-shadow:none!important;
+    color:var(--on-surface-variant);
+    font-size:18px;
+    line-height:1;
+    cursor:pointer;
+    padding:0;
+    justify-self:end;
+    touch-action:manipulation;
+  }
+  .task-delete:hover{ color:#ef4444; }
+  
+  /* kill any lingering "10m" cells if you have them */
+  .task-row-time{ display:none !important; }
+  
+  /* ===== MOBILE FIXES ===== */
+  @media (max-width: 480px){
+    .task-row.simple{
+      grid-template-columns: 24px 1fr 12px 28px; /* tighter */
+      gap:8px;
+      padding:10px 8px;
+    }
+    .task-title{
+      font-size:13px;
+      -webkit-line-clamp:2; /* keeps dot/X aligned even when title wraps */
+    }
+    .energy-dot{ width:10px; height:10px; }
+    .task-delete{ font-size:20px; padding:4px; margin-right:-2px; }
+  }
+  

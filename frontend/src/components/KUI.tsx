@@ -20,17 +20,14 @@ export function TaskCard({ task, isSelected, onToggleSelect, onDelete, showActio
       <div className="task-index">#{task.id.slice(-1)}</div>
       <div className="task-title">{task.title}</div>
 
-      {/* yellow / green / red dot */}
+      {/* yellow/green/red dot */}
       <span className={`energy-dot ${task.energy}`} aria-label={task.energy} />
 
-      {/* plain X (no pill background) */}
+      {/* plain X */}
       {showActions && onDelete && (
         <button
           className="task-delete"
-          onClick={(e) => {
-            e.stopPropagation()
-            onDelete(task.id)
-          }}
+          onClick={(e) => { e.stopPropagation(); onDelete(task.id); }}
           aria-label="Delete task"
           title="Delete"
         >
@@ -40,6 +37,7 @@ export function TaskCard({ task, isSelected, onToggleSelect, onDelete, showActio
     </div>
   )
 }
+
 
 interface ProgressBarProps {
   progress: number
